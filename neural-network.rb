@@ -26,6 +26,9 @@ class NeuralNetwork
      :ehoW1, :ehoW2, :ehoW3, ehoW4, :ehoW5, :ehoW6,
      :oB1, :oB2 
    ]
+
+
+   @genetic = { how_fast_to_die: [n: rand() * 100, unit: :seconds] }
   end
 
 
