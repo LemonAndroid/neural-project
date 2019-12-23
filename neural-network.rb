@@ -57,7 +57,8 @@ class NeuralNetwork
 
 
   def learn(error)
-    if last_selection_of_parameters_no_more_gains?(error)
+    if last_selection_of_parameters_no_more_gains?(error) # returns false on first call
+      adjust_parameter_learning_rates(@learn_those_parameters, error)
       @learn_those_parameters = @selection_of_parameters_for_learning_iteration.sample(4)
     end
     
@@ -68,7 +69,7 @@ class NeuralNetwork
 
   def alter_parameters(error)
    return lambda do |parameters|
-     parameter_learning_rates[parameters]
+     parameters *= error * @parameter_learning_rates
    end
   end
 end
